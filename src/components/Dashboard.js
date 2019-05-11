@@ -1,31 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux' 
-import Question from './question'
+
+import TabsComponent from './Tabs/Tabs'
 
 class Dashboard extends Component {
+
     render() {
+        // const { activeTab } = this.state
+        // const { unansweredQuestions, answeredQuestions } = this.props
+
         return(
-            <div>
-                <h3 className="center">Polls</h3>
+            <div className="">
+                <h3>Polls</h3>
                 <header>Home | New Question | Leader Board </header>
-                
-                <ul className="dashboard-list">
-                    {this.props.questionIds.map((id) => (
-                        <li key={id}>
-                            <Question id={id}/>
-                        </li>
-                    ))}
-                </ul>
+                <TabsComponent />
             </div>
         )
     }
 }
 
-function mapStateToProps({ questions }) {
-    return {
-        questionIds: Object.keys(questions)
-        .sort((a,b) => questions[b].timestamp - questions[a].timestgamp)
-    }
-}
-
-export default connect(mapStateToProps)(Dashboard)
+export default Dashboard

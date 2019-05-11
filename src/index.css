@@ -59,3 +59,25 @@ li {
   padding: 10px;
   text-decoration: none;
 }
+
+.Tabs {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0px;
+  background: white;
+  color: grey;
+  cursor: pointer;
+}
+
+.Tabs:hover, .Tabs--active {
+  background: white;
+  color: black;
+}
+
+/* .Tabs__Underline {
+  position: relative;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-bottom: 2px solid orange;
+} */

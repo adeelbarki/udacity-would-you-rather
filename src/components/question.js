@@ -22,7 +22,7 @@ class Question extends Component {
             return <p>This question doesn't exist</p>
         }
 
-        const { name, avatar, optionOne, optionTwo, parent } = question
+        const { name, avatar, optionOne, optionTwo } = question
 
         return (
             <div className="question">
