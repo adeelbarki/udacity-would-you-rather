@@ -6,41 +6,54 @@ import "react-tabs/style/react-tabs.css"
 
 
 class TabsComponent extends Component {
-    render(){
+    render() {
+        const { unansweredQuestions, answeredQuestions } = this.props
         return (
             <Tabs>
-              <TabList>
-                <div className="Tabs">
-                <Tab>Unanswered Questions</Tab>
-                <Tab>Answered Questions</Tab>
-                </div>
-                
-              </TabList>
-          
-              <TabPanel>
-                <div>
-                {<ul className="">
-                    {this.props.questionIds.map((id) => (
-                        <li key={id}>
-                            <Question id={id}/>
-                        </li>
-                    ))}
-                </ul> }    
-                </div>
-              </TabPanel>
-              <TabPanel>
-                <h2>Any content 2</h2>
-              </TabPanel>
+                <TabList>
+                    <div className="Tabs">
+                        <Tab>Unanswered Questions</Tab>
+                        <Tab>Answered Questions</Tab>
+                    </div>
+
+                </TabList>
+
+                <TabPanel>
+
+                    <ul>
+                        {unansweredQuestions.map(id => (
+                            <li key={id}>
+                                <Question id={id} />
+                            </li>
+                        ))}
+                    </ul>
+
+                </TabPanel>
+                <TabPanel>
+                    <div>
+                        <ul>
+                            {answeredQuestions.map(id => (
+                                <li key={id}>
+                                    <Question id={id} />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </TabPanel>
             </Tabs>
-          );
+        );
     }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, users, authedUser }) {
+    const user = users[authedUser];
+    const answeredQuestions = Object.keys(user.answers)
+        .sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+    const unansweredQuestions = Object.keys(questions).filter(id => !answeredQuestions.includes(id))
+        .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     return {
-        questionIds: Object.keys(questions)
-        .sort((a,b) => questions[b].timestamp - questions[a].timestgamp)
+        unansweredQuestions,
+        answeredQuestions
     }
 }
-
 export default connect(mapStateToProps)(TabsComponent)
