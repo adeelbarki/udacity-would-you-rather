@@ -9,7 +9,7 @@ class Question extends Component {
         //this.toParent redirect to poll results
         // todo: Handle Vote 
     }
-    
+
     toParent = (event, id) => {
         event.preventDefault()
         // Redirect to Poll results
@@ -33,11 +33,13 @@ class Question extends Component {
                     </div>
                     <div>
                         <h3>Would You Rather...</h3>
-                        <input type="radio" name="vote" value={optionOne} />{optionOne}<br />
-                        <input type="radio" name="vote" value={optionTwo} />{optionTwo} <br />
-                        <button onClick={this.handleVote}>Submit</button>
+                        [{optionOne}] <i>- or -</i> [{optionTwo}]
+                        {/* <input type="radio" name="vote" value={optionTwo} />{optionTwo} <br /> */}
+                        <br />
+                        <button onClick={this.handleVote}>View this Card!</button>
+
                     </div>
-                    
+
                 </div>
             </div>
         )
@@ -46,11 +48,10 @@ class Question extends Component {
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
     const question = questions[id]
-    const parentQuestion = question ? questions[question.votingTo] : null
 
     return {
         authedUser,
-        question: formatQuestion(question, users[question.author], parentQuestion)
+        question: formatQuestion(question, users[question.author])
     }
 }
 

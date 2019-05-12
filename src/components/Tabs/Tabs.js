@@ -45,7 +45,7 @@ class TabsComponent extends Component {
     }
 }
 
-function mapStateToProps({ questions, users, authedUser }) {
+function mapStateToProps({ authedUser, users, questions }) {
     const user = users[authedUser];
     const answeredQuestions = Object.keys(user.answers)
         .sort((a, b) => questions[b].timestamp - questions[a].timestamp);
