@@ -1,5 +1,4 @@
 import React, { Component } from 'react' 
-
 import TabsComponent from './Tabs/Tabs'
 
 class Dashboard extends Component {

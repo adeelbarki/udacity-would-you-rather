@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import LoadingBar from 'react-redux-loading'
-import Question from './Question';
 import { Route } from 'react-router-dom'
 import Vote from './Vote'
 
@@ -25,8 +24,8 @@ class App extends Component {
 
         )} />
 
-        <Route path="/question/:question_id" render={() => (
-          <Vote />
+        <Route path="/question/:question_id" render={(props) => (
+          <Vote {...props} />
         )} />
       </div>
     )

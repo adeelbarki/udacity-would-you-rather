@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion } from '../utils/helpers';
-import Vote from './Vote'
 import { Link } from 'react-router-dom'
 
 class Question extends Component {
@@ -16,7 +15,7 @@ class Question extends Component {
     }
 
     render() {
-        const { questions, question, question_id } = this.props
+        const { question, question_id } = this.props
         if (question === null) {
             return <p>This question doesn't exist</p>
         }
