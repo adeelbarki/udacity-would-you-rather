@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion } from '../utils/helpers';
+import Vote from './Vote'
+import { Link } from 'react-router-dom'
 
 class Question extends Component {
 
-    handleVote = (event) => {
+    toVote = (event) => {
         event.preventDefault()
-        //this.toParent redirect to poll results
-        // todo: Handle Vote 
     }
 
     toParent = (event, id) => {
@@ -16,8 +16,7 @@ class Question extends Component {
     }
 
     render() {
-        const { question } = this.props
-
+        const { questions, question, question_id } = this.props
         if (question === null) {
             return <p>This question doesn't exist</p>
         }
@@ -25,33 +24,31 @@ class Question extends Component {
         const { name, avatar, optionOne, optionTwo } = question
 
         return (
-            <div className="question">
-                <div className="question">
-                    <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
-                    <div className="question-info">
-                        <span>{name} asks:</span>
-                    </div>
-                    <div>
-                        <h3>Would You Rather...</h3>
-                        [{optionOne}] <i>- or -</i> [{optionTwo}]
-                        {/* <input type="radio" name="vote" value={optionTwo} />{optionTwo} <br /> */}
-                        <br />
-                        <button onClick={this.handleVote}>View this Card!</button>
+            <div>
+                <span>{name} asks:</span>
+                <br/>
+                <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
 
-                    </div>
-
+                <div>
+                    <h3>Would You Rather...</h3>
+                    {optionOne} <small><i>- or -</i></small> {optionTwo}
+                    {/* <input type="radio" name="vote" value={optionTwo} />{optionTwo} <br /> */}
+                    <br />
+                    <Link to= {`/question/${question_id}`}>
+                    <button>View this Card!</button>
+                    </Link>
                 </div>
             </div>
         )
     }
 }
 
-function mapStateToProps({ authedUser, users, questions }, { id }) {
+function mapStateToProps({ users, questions }, { id }) {
     const question = questions[id]
-
+    const question_id = question.id
     return {
-        authedUser,
-        question: formatQuestion(question, users[question.author])
+        question_id,
+        question: formatQuestion(question, users[question.author]),
     }
 }
 
