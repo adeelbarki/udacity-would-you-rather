@@ -4,28 +4,39 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import LoadingBar from 'react-redux-loading'
+import Question from './Question';
+import { Route } from 'react-router-dom'
+import Vote from './Vote'
 
 class App extends Component {
-  componentDidMount() {
+  constructor(props){
+    super(props)
     this.props.dispatch(handleInitialData())
   }
-  render () {
+  render() {
+    const { loading } = this.props
     return (
       <div className="App">
-      <LoadingBar />
-        {this.props.loading === true
-          ? null
-          : <Dashboard />
-        }
+        <LoadingBar />
+        <Route exact path="/" render={() => (
+          loading === true
+            ? null
+            : <Dashboard />
+
+        )} />
+
+        <Route path="/question/:question_id" render={() => (
+          <Vote />
+        )} />
       </div>
     )
   }
-  
+
 }
 
 function mapStateToProps({ authedUser }) {
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
   }
 }
 
