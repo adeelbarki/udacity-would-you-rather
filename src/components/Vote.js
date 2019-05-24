@@ -7,10 +7,12 @@ import { handleSaveQuestionAnswer } from '../actions/questions'
 
 class Vote extends Component {
 
-    handleSubmit(event) {
-        this.props.dispatch(handleSaveQuestionAnswer(event))
-
+    handleSubmit = (e) => {
+        const { dispatch } = this.props
+        dispatch(handleSaveQuestionAnswer(e))
     }
+
+    
     render() {
 
         const { question, authedUser, answeredQuestion, users, this_question_id } = this.props

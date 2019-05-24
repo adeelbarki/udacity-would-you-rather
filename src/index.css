@@ -73,3 +73,10 @@ li {
   background: white;
   color: black;
 }
+.question-length {
+  color: red
+}
+
+.option-text {
+  width: 50%
+}
