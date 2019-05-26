@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom'
 import Vote from './Vote'
 import Nav from './nav'
 import newQuestion from './NewQuestion';
+import Leaderboard from './Leaderboard';
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class App extends Component {
         <h3>Polls</h3>
         <div className="conatiner">
           <Nav />
-          {this.props.loading === true
+          {loading === true
             ? null
             : <div>
               <Route path='/' exact component={Dashboard} />
@@ -30,6 +31,7 @@ class App extends Component {
                 <Vote {...props} />
               )} />
               <Route path="/new" component={newQuestion} />
+              <Route path="/leader" component={Leaderboard} />
             </div>
           }
         </div>

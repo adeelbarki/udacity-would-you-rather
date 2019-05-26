@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 
@@ -14,6 +14,11 @@ export default function Nav() {
                 <li>
                     <NavLink to='/new' exact activeClassName="active">
                         New Question
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/leader' exact activeClassName="active">
+                        LeaderBoard
                     </NavLink>
                 </li>
             </ul>
