@@ -4,6 +4,10 @@ import { setAuthedUser } from '../actions/authedUser'
 import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
+    componentWillMount() {
+        this.props.dispatch(setAuthedUser(false))
+      }
+    
     state = {
         username: '',
         isLoggedIn: false

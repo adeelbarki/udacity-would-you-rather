@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 
-export default function Nav() {
-    return (
-        <nav className="nav">
+class Navbar extends Component {
+    render() {
+
+        const { user, authedUser } = this.props
+        const userLink = (
             <ul>
                 <li>
                     <NavLink to='/home' exact activeClassName="active">
@@ -21,12 +24,34 @@ export default function Nav() {
                         LeaderBoard
                     </NavLink>
                 </li>
+                <li>{user ? user.name : null}</li>
                 <li>
-                    <NavLink to='/login' exact activeClassName="active">
-                        Login
-                    </NavLink>
+                    <a href="/login">Log out</a>
                 </li>
             </ul>
-        </nav>
-    )
+        )
+
+        const guestLink = (
+                        <h2>Who are you?</h2>
+        )
+
+        return (
+            <nav className="nav">
+                {authedUser ? userLink : guestLink}
+            </nav>
+        )
+    }
+
 }
+
+function mapStateToProps({ users, authedUser }) {
+    const user = users[authedUser]
+    console.log(authedUser)
+    return {
+        user,
+        authedUser
+    }
+
+}
+
+export default connect(mapStateToProps)(Navbar)
