@@ -9,6 +9,7 @@ import Vote from './Vote'
 import Nav from './nav'
 import newQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
+import Login from './Login'
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +27,8 @@ class App extends Component {
           {loading === true
             ? null
             : <div>
-              <Route path='/' exact component={Dashboard} />
+              <Route path="/login" exact component={Login} />
+              <Route path='/home' exact component={Dashboard} />
               <Route path="/question/:question_id" render={(props) => (
                 <Vote {...props} />
               )} />

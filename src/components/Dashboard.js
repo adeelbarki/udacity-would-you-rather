@@ -4,44 +4,44 @@ import Question from './Question'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import "react-tabs/style/react-tabs.css"
 
-
 class Dashboard extends Component {
     render() {
         const { unansweredQuestions, answeredQuestions } = this.props
-        return (
-            <Tabs>
-                <TabList>
-                    <div className="Tabs">
-                        <Tab>Unanswered Questions</Tab>
-                        <Tab>Answered Questions</Tab>
-                    </div>
+            return (
+                <Tabs>
+                    <TabList>
+                        <div className="Tabs">
+                            <Tab>Unanswered Questions</Tab>
+                            <Tab>Answered Questions</Tab>
+                        </div>
 
-                </TabList>
+                    </TabList>
 
-                <TabPanel>
+                    <TabPanel>
 
-                    <ul>
-                        {unansweredQuestions.map(id => (
-                            <li key={id}>
-                                <Question id={id} />
-                            </li>
-                        ))}
-                    </ul>
-
-                </TabPanel>
-                <TabPanel>
-                    <div>
                         <ul>
-                            {answeredQuestions.map(id => (
+                            {unansweredQuestions.map(id => (
                                 <li key={id}>
                                     <Question id={id} />
                                 </li>
                             ))}
                         </ul>
-                    </div>
-                </TabPanel>
-            </Tabs>
-        );
+
+                    </TabPanel>
+                    <TabPanel>
+                        <div>
+                            <ul>
+                                {answeredQuestions.map(id => (
+                                    <li key={id}>
+                                        <Question id={id} />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </TabPanel>
+                </Tabs>
+            );
+
     }
 }
 
@@ -53,7 +53,8 @@ function mapStateToProps({ authedUser, users, questions }) {
         .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     return {
         unansweredQuestions,
-        answeredQuestions
+        answeredQuestions,
+        authedUser
     }
 }
 export default connect(mapStateToProps)(Dashboard)

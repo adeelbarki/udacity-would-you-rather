@@ -7,7 +7,7 @@ export default function Nav() {
         <nav className="nav">
             <ul>
                 <li>
-                    <NavLink to='/' exact activeClassName="active">
+                    <NavLink to='/home' exact activeClassName="active">
                         Home
                     </NavLink>
                 </li>
@@ -19,6 +19,11 @@ export default function Nav() {
                 <li>
                     <NavLink to='/leader' exact activeClassName="active">
                         LeaderBoard
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/login' exact activeClassName="active">
+                        Login
                     </NavLink>
                 </li>
             </ul>

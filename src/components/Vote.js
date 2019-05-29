@@ -24,7 +24,7 @@ class Vote extends Component {
                     <h2>Waiting for Question to load! If page doesn't load </h2>
                     <p>
                         Return {'-'}
-                        <Link to="/">
+                        <Link to="/home">
                             <span> Back to Home</span>
                         </Link>
                     </p>
@@ -89,7 +89,7 @@ class Vote extends Component {
                                 <span> {optionTwo}</span>
                             </li>
                         </ul>
-                        <Link to="/">
+                        <Link to="/home">
                             <span> Back to Home Page</span>
                         </Link>
                     </div>

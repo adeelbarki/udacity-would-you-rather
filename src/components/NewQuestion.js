@@ -43,7 +43,7 @@ class NewQuestion extends Component {
         const spaceOptionTwo = 50 - optionTwoText.length
 
         if(toHome === true) {
-            return <Redirect to='/' />
+            return <Redirect to='/home' />
         }
         return (
             <div>
