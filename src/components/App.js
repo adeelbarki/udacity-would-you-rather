@@ -34,6 +34,7 @@ class App extends Component {
               )} />
               <Route path="/new" component={newQuestion} />
               <Route path="/leader" component={Leaderboard} />
+              <Route path="/" exact component={Login} />
             </div>
           }
         </div>
