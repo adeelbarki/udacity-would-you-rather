@@ -38,58 +38,58 @@ class NewQuestion extends Component {
     render() {
 
         const { optionOneText, optionTwoText, toHome } = this.state
-        const disableSubmit = optionOneText === '' ? true: optionTwoText === ''
+        const disableSubmit = optionOneText === '' ? true : optionTwoText === ''
         const spaceOptionOne = 50 - optionOneText.length
         const spaceOptionTwo = 50 - optionTwoText.length
 
-        if(toHome === true) {
+        if (toHome === true) {
             return <Redirect to='/home' />
         }
         return (
-            <div>
-                <h3 className="center">Create New Question</h3> <br />
-                <span>Complete the question:</span>
-                <h3>Would you Rather ...</h3>
-                <form className="new-question" onSubmit={this.handleSubmit}>
-                    <span>1: </span>
-                    <input
-                        type="text"
-                        placeholder="Enter Option One Text here"
-                        value={optionOneText}
-                        name="optionOneText"
-                        onChange={this.handleChange}
-                        className="option-text"
-                        maxLength={50}
-                    />
-                    {spaceOptionOne <= 50 && (
-                        <span className="question-length">
-                            <small><i> {spaceOptionOne}</i></small>
-                        </span>
-                    )}
+            <div className="card w-25 mx-auto">
+                <div className="container">
+                    <h3 className="center">Create New Question</h3> <br />
+                    <span>Complete the question:</span>
+                    <h3>Would you Rather ...</h3>
+                    <form className="new-question" onSubmit={this.handleSubmit}>
+                        <span>1: </span>
+                        <input
+                            type="text"
+                            placeholder="Enter Option One Text here"
+                            value={optionOneText}
+                            name="optionOneText"
+                            onChange={this.handleChange}
+                            className="option-text"
+                            maxLength={50}
+                        />
+                        {spaceOptionOne <= 50 && (
+                            <span className="question-length">
+                                <small><i> {spaceOptionOne}</i></small>
+                            </span>
+                        )}
 
-                    <br /><br />
-                    <span>2: </span>
-                    <input
-                        type="text"
-                        placeholder="Enter Option Two Text here"
-                        value={optionTwoText}
-                        name="optionTwoText"
-                        onChange={this.handleChange}
-                        className="option-text"
-                        maxLength={50}
-                    />
-                    {spaceOptionOne <= 50 && (
-                        <span className="question-length">
-                            <small><i> {spaceOptionTwo}</i></small>
-                        </span>
-                    )} 
-                    <br />
-                    <button className="btn" type="submit" disabled={disableSubmit} >
-                        Submit
-                </button>
-                </form>
-
-
+                        <br /><br />
+                        <span>2: </span>
+                        <input
+                            type="text"
+                            placeholder="Enter Option Two Text here"
+                            value={optionTwoText}
+                            name="optionTwoText"
+                            onChange={this.handleChange}
+                            className="option-text"
+                            maxLength={50}
+                        />
+                        {spaceOptionOne <= 50 && (
+                            <span className="question-length">
+                                <small><i> {spaceOptionTwo}</i></small>
+                            </span>
+                        )}
+                        <br />
+                        <button className="btn btn-primary  btn-question" type="submit" disabled={disableSubmit} >
+                            Submit
+                        </button>
+                    </form>
+                </div>
             </div>
         )
     }

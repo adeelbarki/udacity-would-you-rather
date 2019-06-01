@@ -8,6 +8,7 @@ class Dashboard extends Component {
     render() {
         const { unansweredQuestions, answeredQuestions } = this.props
             return (
+                <div className="w-25 mx-auto">
                 <Tabs>
                     <TabList>
                         <div className="Tabs">
@@ -40,6 +41,7 @@ class Dashboard extends Component {
                         </div>
                     </TabPanel>
                 </Tabs>
+                </div>
             );
 
     }

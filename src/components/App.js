@@ -21,7 +21,6 @@ class App extends Component {
     return (
       <Fragment>
         <LoadingBar />
-        <h3>Polls</h3>
         <div className="conatiner">
           <Nav />
           {loading === true

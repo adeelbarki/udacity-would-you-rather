@@ -12,7 +12,7 @@ class Vote extends Component {
         dispatch(handleSaveQuestionAnswer(e))
     }
 
-    
+
     render() {
 
         const { question, authedUser, answeredQuestion, users, this_question_id } = this.props
@@ -36,62 +36,74 @@ class Vote extends Component {
 
         if (answeredQuestion === undefined) {
             return (
-                <div>
-                    <span><h2>{name}</h2> asks:</span>
-                    <br />
-                    <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
-                    <div>
-                        <h3>Would You Rather...</h3>
-                        <ul>
-                            <li>
-                                <button onClick={() => this.handleSubmit(
-                                    {
-                                        authedUser, qid: this_question_id, answer: 'optionOne'
-                                    }
-                                )}
-                                >
-                                    Vote
+                <div className="card w-25 mx-auto">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+                            </div>
+                            <div className="col-10">
+                                <span>{name} asks:</span>
+                                <br />
+                                <h3>Would You Rather...</h3>
+                                <ul>
+                                    <li>
+                                        <button onClick={() => this.handleSubmit(
+                                            {
+                                                authedUser, qid: this_question_id, answer: 'optionOne'
+                                            }
+                                        )}
+                                        >
+                                            Vote
                                 </button>
-                                <span> {optionOne}</span>
-                            </li>
-                            <small><i>- or -</i></small>
-                            <li>
-                                <button onClick={() => this.handleSubmit(
-                                    {
-                                        authedUser, qid: this_question_id, answer: 'optionTwo'
-                                    }
-                                )}
-                                >
-                                    Vote
+                                        <span> {optionOne}</span>
+                                    </li>
+                                    <small><i>- or -</i></small>
+                                    <li>
+                                        <button onClick={() => this.handleSubmit(
+                                            {
+                                                authedUser, qid: this_question_id, answer: 'optionTwo'
+                                            }
+                                        )}
+                                        >
+                                            Vote
                                 </button>
-                                <span> {optionTwo}</span>
-                            </li>
-                        </ul>
+                                        <span> {optionTwo}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             )
-
         } else {
             return (
-                <div>
-                    <span><h2>{name}</h2> asks:</span>
-                    <br />
-                    <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
-                    <div>
-                        <h3>Total Votes</h3>
-                        <ul>
-                            <li>
-                                {question.optionOne.votes.length}
-                                <span> {optionOne}</span>
-                            </li>
-                            <li>
-                                {question.optionTwo.votes.length}
-                                <span> {optionTwo}</span>
-                            </li>
-                        </ul>
-                        <Link to="/home">
-                            <span> Back to Home Page</span>
-                        </Link>
+                <div className="card w-25 mx-auto">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+                            </div>
+                            <div className="col-10">
+                                <span>{name} asks:</span>
+                                <br/>
+                                Total Votes
+                                <ul>
+                                    <li>
+                                        {question.optionOne.votes.length}
+                                        <span> {optionOne}</span>
+                                    </li>
+                                    <li>
+                                        {question.optionTwo.votes.length}
+                                        <span> {optionTwo}</span>
+                                    </li>
+                                </ul>
+                                <Link to="/home">
+                                    <span> Back to Home Page</span>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )
