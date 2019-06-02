@@ -10,6 +10,7 @@ import Nav from './nav'
 import newQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
 import Login from './Login'
+import PrivateRoute from './PrivateRoute'
 
 class App extends Component {
   constructor(props) {
@@ -27,12 +28,12 @@ class App extends Component {
             ? null
             : <div>
               <Route path="/login" exact component={Login} />
-              <Route path='/home' exact component={Dashboard} />
-              <Route path="/question/:question_id" render={(props) => (
+              <PrivateRoute path='/home' exact component={Dashboard} />
+              <PrivateRoute path="/question/:question_id" component={Vote} render={(props) => (
                 <Vote {...props} />
               )} />
-              <Route path="/new" component={newQuestion} />
-              <Route path="/leader" component={Leaderboard} />
+              <PrivateRoute path="/new" exact component={newQuestion} />
+              <PrivateRoute path="/leader" exact component={Leaderboard} />
               <Route path="/" exact component={Login} />
             </div>
           }
@@ -40,7 +41,6 @@ class App extends Component {
       </Fragment>
     )
   }
-
 }
 
 function mapStateToProps({ authedUser }) {
