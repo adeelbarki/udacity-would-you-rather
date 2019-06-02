@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { formatQuestion } from '../utils/helpers';
 import { handleSaveQuestionAnswer } from '../actions/questions'
+import yourVote from '../your-vote.png'
 
 
 class Vote extends Component {
@@ -21,7 +22,7 @@ class Vote extends Component {
         if (!question) {
             return (
                 <div>
-                    <h2>Waiting for Question to load! If page doesn't load </h2>
+                    <h2>404! This question doesn't exist </h2>
                     <p>
                         Return {'-'}
                         <Link to="/home">
@@ -78,30 +79,56 @@ class Vote extends Component {
                 </div>
             )
         } else {
+            const optionOneLength = question.optionOne.votes.length
+            const optionTwoLength = question.optionTwo.votes.length
+            const TotalVotes = optionOneLength + optionTwoLength
+            const optionOnePercent = parseInt((optionOneLength / TotalVotes) * 100, 10)
+            const optionTwoPercent = parseInt((optionTwoLength / TotalVotes) * 100, 10)
             return (
-                <div className="card w-25 mx-auto">
+
+                <div className="card w-25 mx-auto" style={{ marginTop: "20px" }}>
+                    <div className="card-header">
+                        <h5>Asked by {name}</h5>
+                    </div>
                     <div className="container">
+
                         <div className="row">
                             <div className="col">
-                                <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+                                <img src={avatar} alt={`Avatar of ${name}`} 
+                                className="avatar mx-auto d-block" />
                             </div>
-                            <div className="col-10">
-                                <span>{name} asks:</span>
-                                <br/>
-                                Total Votes
+                            <div className="col-8">
+                                <h2>Results: </h2>
                                 <ul>
-                                    <li>
-                                        {question.optionOne.votes.length}
-                                        <span> {optionOne}</span>
+                                    <li className="card bg-info text-white">
+                                        {users[authedUser].answers[question.id] === 'optionOne' ?
+                                            <div className="card-img-overlay" style={{ float: 'bottom', margin: '-40px 15px 15px 240px' }}>
+                                                <img className="text-right" src={yourVote} alt="logo" style={{ width: '50px', height: '50px' }} />
+                                            </div>
+                                            : ''}
+                                        <span> {optionOne} </span> <br />
+                                        <div className="progress">
+                                            <div className="progress-bar border-sucess bg-warning" role="progressbar" style={{ width: optionOnePercent + ("%") }}
+                                                aria-valuenow={optionOnePercent} aria-valuemin="0" aria-valuemax="100">
+                                                {optionOnePercent}%</div>
+                                        </div>
+                                        <i className="m-auto">{question.optionOne.votes.length} out of {TotalVotes} votes</i>
                                     </li>
-                                    <li>
-                                        {question.optionTwo.votes.length}
-                                        <span> {optionTwo}</span>
+                                    <li className="card border-dark bg-light" style={{ marginTop: "10px" }}>
+                                        {users[authedUser].answers[question.id] === 'optionTwo' ?
+                                            <div className="card-img-overlay" style={{ float: 'right', margin: '50px 15px 15px 240px' }}>
+                                                <img className="text-right" src={yourVote} alt="logo" style={{ width: '50px', height: '50px' }} />
+                                            </div>
+                                            : ''}
+                                        <span> {optionTwo} </span> <br />
+                                        <div className="progress">
+                                            <div className="progress-bar" role="progressbar" style={{ width: optionTwoPercent + ("%") }}
+                                                aria-valuenow={optionTwoPercent} aria-valuemin="0" aria-valuemax="100">
+                                                {optionTwoPercent}%</div>
+                                        </div>
+                                        <i className="m-auto">{question.optionTwo.votes.length} out of {TotalVotes} votes</i>
                                     </li>
                                 </ul>
-                                <Link to="/home">
-                                    <span> Back to Home Page</span>
-                                </Link>
                             </div>
                         </div>
                     </div>

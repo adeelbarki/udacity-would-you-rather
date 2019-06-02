@@ -10,7 +10,6 @@ class Leaderboard extends Component {
         return (
             <div className="card w-25 mx-auto">
                 <div className="container">
-                    <h1 className="App">Leaderboard</h1>
                     {users.map((userId) =>
                         <User key={userId} id={userId} />
                     )}

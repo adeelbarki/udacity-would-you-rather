@@ -47,7 +47,7 @@ class Navbar extends Component {
         return (
             <nav className="nav navbar-expand-lg navbar-light bg-dark">
                 <h2 className="nav-link text-white m-left">Polls</h2>
-                <img className="ml-2 text-white" src={logo} alt="logo" style={{ width: '40px', height: '40px' }} />
+                <img className="ml-2 text-white" src={logo} alt="logo" style={{ width: '40px', height: '50px' }} />
                 {authedUser ? userLink : guestLink}
             </nav>
         )

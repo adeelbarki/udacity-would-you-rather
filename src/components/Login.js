@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 import { Redirect } from 'react-router-dom'
+import reactReduxLogo from '../react-redux.svg'
 
 class Login extends Component {
     componentWillMount() {
@@ -12,6 +13,7 @@ class Login extends Component {
         username: '',
         isLoggedIn: false
     }
+    
     handleSubmit = (e) => {
         e.preventDefault()
         const { username } = this.state
@@ -25,6 +27,7 @@ class Login extends Component {
                 }))
         }
     }
+
     handleChange = (e) => {
         const username = e.target.value
         this.setState(() => ({
@@ -35,26 +38,32 @@ class Login extends Component {
     render() {
         const { username, isLoggedIn } = this.state
         const { users } = this.props
+        const disableSubmit = username === '' ? true : false
 
         if (isLoggedIn) {
             return <Redirect to='/home' />
         }
 
-
         return (
-            <div className="card w-25 mx-auto App">
+            <div className="card w-25 mx-auto App" style={{ marginTop: "20px" }}>
+                <div className="card-header">
+                    <h4>Welcome to the Would You Rather App</h4>
+                    <p>Please sign in to continue</p>
+                </div>
+                <img src={reactReduxLogo} style={{width: '150px', height: '150px'}} alt="reactReduxLogo" />
                 <form onSubmit={this.handleSubmit}>
-                    <h2>Please sign in</h2>
-                    <label htmlFor="username">User</label>
 
-                    <select id="username" value={username} onChange={this.handleChange}>
-                        <option value='' disabled>Select</option>
+                    <h4>Sign in</h4>
+                    <select className="select-input" 
+                        id="username" value={username} onChange={this.handleChange}>
+                        <option value='' disabled>Select User</option>
                         {users.map((user) => (
                             <option key={user.id} value={user.id}>{user.name}</option>
                         )
                         )}
                     </select>
-                    <button type="submit" id="submit" name="submit" className="btn btn-primary btn-question">Login</button>
+                    <button type="submit" id="submit" name="submit" 
+                    className="btn btn-primary btn-question" disabled={disableSubmit}>Login</button>
                 </form>
             </div>
         )

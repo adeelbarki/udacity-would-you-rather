@@ -46,16 +46,17 @@ class NewQuestion extends Component {
             return <Redirect to='/home' />
         }
         return (
-            <div className="card w-25 mx-auto">
+            <div className="card w-25 mx-auto" style={{ marginTop: "20px" }}>
+                <div className="card-header">
+                    <h3 className="App">Create New Question</h3>
+                </div>
                 <div className="container">
-                    <h3 className="center">Create New Question</h3> <br />
-                    <span>Complete the question:</span>
-                    <h3>Would you Rather ...</h3>
+                    <span>Complete the question:</span><br/> <br/>
+                    <h4>Would you Rather ...</h4>
                     <form className="new-question" onSubmit={this.handleSubmit}>
-                        <span>1: </span>
                         <input
                             type="text"
-                            placeholder="Enter Option One Text here"
+                            placeholder=" Enter Option One Text here"
                             value={optionOneText}
                             name="optionOneText"
                             onChange={this.handleChange}
@@ -64,15 +65,16 @@ class NewQuestion extends Component {
                         />
                         {spaceOptionOne <= 50 && (
                             <span className="question-length">
-                                <small><i> {spaceOptionOne}</i></small>
+                                <small><i> ( {spaceOptionOne} remaining ) </i></small>
                             </span>
                         )}
 
-                        <br /><br />
-                        <span>2: </span>
+                        <h4 className="App">---- OR ----</h4>
+
+                        <br />
                         <input
                             type="text"
-                            placeholder="Enter Option Two Text here"
+                            placeholder=" Enter Option Two Text here"
                             value={optionTwoText}
                             name="optionTwoText"
                             onChange={this.handleChange}
@@ -81,11 +83,11 @@ class NewQuestion extends Component {
                         />
                         {spaceOptionOne <= 50 && (
                             <span className="question-length">
-                                <small><i> {spaceOptionTwo}</i></small>
+                                <small><i> ( {spaceOptionTwo} remaining )</i></small>
                             </span>
                         )}
                         <br />
-                        <button className="btn btn-primary  btn-question" type="submit" disabled={disableSubmit} >
+                        <button className="btn btn-info  btn-question" type="submit" disabled={disableSubmit} >
                             Submit
                         </button>
                     </form>

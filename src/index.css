@@ -16,6 +16,7 @@ code {
   text-align: center;
 }
 
+
 .avatar {
   height: 50px;
   border-radius: 10px;
@@ -25,12 +26,17 @@ code {
 
 .justify-content-guest{
   justify-content: right;
-  margin-left: 100rem;
+  margin-left: 90rem;
 }
 
 .btn-question{
   width: 100%;
   margin-top: 20px
+}
+
+.select-input{
+  width: 100%;
+  margin-top: 5px
 }
 
 .question {
@@ -89,9 +95,9 @@ li {
   color: black;
 }
 .question-length {
-  color: red
+  margin-left: 350px;;
 }
 
 .option-text {
-  width: 50%
+  width: 100%
 }
