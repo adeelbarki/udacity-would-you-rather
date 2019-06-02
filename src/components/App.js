@@ -32,8 +32,8 @@ class App extends Component {
               <PrivateRoute path="/question/:question_id" component={Vote} render={(props) => (
                 <Vote {...props} />
               )} />
-              <PrivateRoute path="/new" exact component={newQuestion} />
-              <PrivateRoute path="/leader" exact component={Leaderboard} />
+              <PrivateRoute path="/add" exact component={newQuestion} />
+              <PrivateRoute path="/leaderboard" exact component={Leaderboard} />
               <Route path="/" exact component={Login} />
             </div>
           }

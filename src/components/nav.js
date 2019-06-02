@@ -12,28 +12,28 @@ class Navbar extends Component {
 
             <ul className="navbar-nav m-auto">
                 <li className="nav-item">
-                    <NavLink to='/home' className="nac-link text-white text-uppercase ml-5" exact activeClassName="active">
+                    <NavLink to='/home' className="nav-link text-white text-uppercase ml-5" exact activeClassName="active">
                         Home <i className="fas fa-home"></i>
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to='/new' className="nac-link text-white text-uppercase ml-5" exact activeClassName="active">
+                    <NavLink to='/add' className="nav-link text-white text-uppercase ml-5" exact activeClassName="active">
                         New Question <i className="far fa-question-circle"></i>
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to='/leader' className="nac-link text-white text-uppercase ml-5" exact activeClassName="active">
+                    <NavLink to='/leaderboard' className="nav-link text-white text-uppercase ml-5" exact activeClassName="active">
                         LeaderBoard <i className="fas fa-ribbon"></i>
                     </NavLink>
                 </li>
-                <h2 className="nac-link text-white text-uppercase ml-5">
+                <h2 className="nav-link text-white text-uppercase ml-5">
                     |</h2>
-                <li className="nav-item m-right"><p className="nac-link text-white text-uppercase ml-5">
+                <li className="nav-item m-right"><p className="nav-link text-white text-uppercase ml-5">
                     {user ? user.name : null} <i className="fas fa-user"></i>
 
                 </p></li>
                 <li>
-                    <NavLink className="nac-link text-white text-uppercase ml-5" to="/login">Log out <i className="fas fa-sign-out-alt"></i></NavLink>
+                    <NavLink className="nav-link text-white text-uppercase ml-5" to="/login">Log out <i className="fas fa-sign-out-alt"></i></NavLink>
                 </li>
             </ul>
         )
@@ -46,7 +46,7 @@ class Navbar extends Component {
 
         return (
             <nav className="nav navbar-expand-lg navbar-light bg-dark">
-                <h2 className="text-white m-left">Polls</h2>
+                <h2 className="nav-link text-white m-left">Polls</h2>
                 <img className="ml-2 text-white" src={logo} alt="logo" style={{ width: '40px', height: '40px' }} />
                 {authedUser ? userLink : guestLink}
             </nav>
