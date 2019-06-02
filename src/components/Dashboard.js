@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
+import Question from './question'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import "react-tabs/style/react-tabs.css"
+import { Link } from 'react-router-dom'
 
 class Dashboard extends Component {
     render() {
@@ -49,7 +50,10 @@ class Dashboard extends Component {
 
 function mapStateToProps({ authedUser, users, questions }) {
     const user = users[authedUser];
-    const answeredQuestions = Object.keys(user.answers)
+    if(user === undefined){
+        return <Link to="/login" />
+    } else {
+        const answeredQuestions = Object.keys(user.answers)
         .sort((a, b) => questions[b].timestamp - questions[a].timestamp);
     const unansweredQuestions = Object.keys(questions).filter(id => !answeredQuestions.includes(id))
         .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
@@ -58,5 +62,7 @@ function mapStateToProps({ authedUser, users, questions }) {
         answeredQuestions,
         authedUser
     }
+    }
+    
 }
 export default connect(mapStateToProps)(Dashboard)

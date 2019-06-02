@@ -13,28 +13,27 @@ class Navbar extends Component {
             <ul className="navbar-nav m-auto">
                 <li className="nav-item">
                     <NavLink to='/home' className="nac-link text-white text-uppercase ml-5" exact activeClassName="active">
-                        Home <i class="fas fa-home"></i>
+                        Home <i className="fas fa-home"></i>
                     </NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink to='/new' className="nac-link text-white text-uppercase ml-5" exact activeClassName="active">
-                        New Question <i class="far fa-question-circle"></i>
+                        New Question <i className="far fa-question-circle"></i>
                     </NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink to='/leader' className="nac-link text-white text-uppercase ml-5" exact activeClassName="active">
-                        LeaderBoard <i class="fas fa-ribbon"></i>
+                        LeaderBoard <i className="fas fa-ribbon"></i>
                     </NavLink>
                 </li>
-                <NavLink className="nac-link text-white text-uppercase ml-5">
-                    <h2>|</h2>
-                </NavLink>
-                <li className="nav-item m-right"><NavLink className="nac-link text-white text-uppercase ml-5">
-                    {user ? user.name : null} <i class="fas fa-user"></i>
+                <h2 className="nac-link text-white text-uppercase ml-5">
+                    |</h2>
+                <li className="nav-item m-right"><p className="nac-link text-white text-uppercase ml-5">
+                    {user ? user.name : null} <i className="fas fa-user"></i>
 
-                </NavLink></li>
+                </p></li>
                 <li>
-                    <a className="nac-link text-white text-uppercase ml-5" href="/login">Log out <i class="fas fa-sign-out-alt"></i></a>
+                    <NavLink className="nac-link text-white text-uppercase ml-5" to="/login">Log out <i className="fas fa-sign-out-alt"></i></NavLink>
                 </li>
             </ul>
         )
