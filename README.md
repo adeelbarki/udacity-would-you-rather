@@ -1,100 +1,44 @@
-# Would You Rather Project
+# Project: Udacity Would You Rather (Version 1.0.1)
 
-This project is under way and related to Udacity's React & Redux course.
+## Description
 
-The `_DATA.js` file represents a fake database and methods that lets an access to the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+This project is designed using ReactJs & redux for _Udacity React Nanodegree Program_. Purpose is to create an application where a voting app is designed. After logged in user can vote for different choices provided. Users can also create their own poll.   
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+This website provides certain features that displays:
 
-## Data
+* login Page for three different users
+* Home Page with all the polls created by users
+* allow users to create new questions / polls
+* Leaderboard with highest to lowest sorting
+* Answered questions for authorized user
+* Unannswered questions for authorized user 
 
-There are two types of objects stored in our database:
 
-* Users
-* Questions
+## Resources
 
-### Users
+The application was created with create-react-app and requires only npm install and npm start to launch. These files can be cloned from [github link]( https://github.com/adeelbarki/udacity-would-you-rather ) using this command
 
-Users include:
+`$ git clone https://github.com/adeelbarki/udacity-would-you-rather.git`
 
-| Attribute    | Type             | Description           |
-|-----------------|------------------|-------------------         |
-| id                 | String           | The user’s unique identifier |
-| name          | String           | The user’s first name  and last name     |
-| avatarURL  | String           | The path to the image file |
-| questions | Array | A list of ids of the polling questions this user created|
-| answers      | Object         |  The object's keys are the ids of each question this user answered. The value of each key is the answer the user selected. It can be either `'optionOne'` or `'optionTwo'` since each question has two options.
+Make sure to `$ cd udacity-would-you-rather` in terminal to access all files. 
 
-### Questions
+## Run the code
 
-Questions include:
+Run `npm install` and then `npm start`to run this application.
 
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| id                  | String | The question’s unique identifier |
-| author        | String | The author’s unique identifier |
-| timestamp | String | The time when the question was created|
-| optionOne | Object | The first voting option|
-| optionTwo | Object | The second voting option|
+Open browser window and type `localhost:3000` to visit would-you-rather application
 
-### Voting Options
+## Testing
 
-Voting options are attached to questions. They include:
+Results of these tasks can be seen on the browser by testing different tabs and voting for different polls. New question can be created by clicking on New question tab. 
 
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| votes             | Array | A list that contains the id of each user who voted for that option|
-| text                | String | The text of the option |
+## License
 
-Your code will talk to the database via 4 methods:
+Project udacity-would-you-rather is a part of React Nanodegree Program at [Udactiy](https://www.udacity.com/course/react-nanodegree--nd019).  
 
-* `_getUsers()`
-* `_getQuestions()`
-* `_saveQuestion(question)`
-* `_saveQuestionAnswer(object)`
+## Author
 
-1) `_getUsers()` Method
-
-*Description*: Get all of the existing users from the database.  
-*Return Value*: Object where the key is the user’s id and the value is the user object.
-
-2) `_getQuestions()` Method
-
-*Description*: Get all of the existing questions from the database.  
-*Return Value*: Object where the key is the question’s id and the value is the question object.
-
-3) `_saveQuestion(question)` Method
-
-*Description*: Save the polling question in the database.  
-*Parameters*:  Object that includes the following properties: `author`, `optionOneText`, and `optionTwoText`. More details about these properties:
-
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| author | String | The id of the user who posted the question|
-| optionOneText| String | The text of the first option |
-| optionTwoText | String | The text of the second option |
-
-*Return Value*:  An object that has the following properties: `id`, `author`, `optionOne`, `optionTwo`, `timestamp`. More details about these properties:
-
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| id | String | The id of the question that was posted|
-| author | String | The id of the user who posted the question|
-| optionOne | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
-| optionTwo | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
-|timestamp|String | The time when the question was created|
-
-4) `_saveQuestionAnswer(object)` Method
-
-*Description*: Save the answer to a particular polling question in the database.
-*Parameters*: Object that contains the following properties: `authedUser`, `qid`, and `answer`. More details about these properties:
-
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| authedUser | String | The id of the user who answered the question|
-| qid | String | The id of the question that was answered|
-| answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
-
-## Contributing
-
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
+* Adeel Ahmed Khan (Adeel Barki) <br />
+  __ _Full Stack Web Developer_ <br />
+  _Front End Web Developer_ <br />
+  _React Web Developer_ __ <br />
