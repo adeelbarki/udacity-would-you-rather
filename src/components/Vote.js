@@ -34,47 +34,46 @@ class Vote extends Component {
         }
         const selectedQuestion = formatQuestion(question, users[question.author])
         const { name, avatar, optionOne, optionTwo } = selectedQuestion
-
         if (answeredQuestion === undefined) {
             return (
-                <div className="card w-25 mx-auto">
+                <div className="card w-25 mx-auto" style={{ marginTop: "20px" }}>
+                    <div className="card-header">
+                        <h5>{name} asks: </h5>
+                    </div>
                     <div className="container">
                         <div className="row">
                             <div className="col">
                                 <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
                             </div>
                             <div className="col-10">
-                                <span>{name} asks:</span>
-                                <br />
                                 <h3>Would You Rather...</h3>
                                 <ul>
-                                    <li>
-                                        <button onClick={() => this.handleSubmit(
+                                    <li className="card bg-info text-white">
+                                        <span> {optionOne}</span>
+                                        <button className="btn border-dark btn-light btn-question" onClick={() => this.handleSubmit(
                                             {
                                                 authedUser, qid: this_question_id, answer: 'optionOne'
                                             }
                                         )}
                                         >
                                             Vote
-                                </button>
-                                        <span> {optionOne}</span>
+                                        </button>
                                     </li>
-                                    <small><i>- or -</i></small>
-                                    <li>
-                                        <button onClick={() => this.handleSubmit(
+                                    <h4 className="App">---- OR ----</h4>
+                                    <li className="card border-dark bg-light">
+                                        <span> {optionTwo}</span>
+                                        <button className="btn border-dark btn-light  btn-question" onClick={() => this.handleSubmit(
                                             {
                                                 authedUser, qid: this_question_id, answer: 'optionTwo'
                                             }
                                         )}
                                         >
                                             Vote
-                                </button>
-                                        <span> {optionTwo}</span>
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-
                     </div>
                 </div>
             )
@@ -85,17 +84,15 @@ class Vote extends Component {
             const optionOnePercent = parseInt((optionOneLength / TotalVotes) * 100, 10)
             const optionTwoPercent = parseInt((optionTwoLength / TotalVotes) * 100, 10)
             return (
-
                 <div className="card w-25 mx-auto" style={{ marginTop: "20px" }}>
                     <div className="card-header">
                         <h5>Asked by {name}</h5>
                     </div>
                     <div className="container">
-
                         <div className="row">
                             <div className="col">
-                                <img src={avatar} alt={`Avatar of ${name}`} 
-                                className="avatar mx-auto d-block" />
+                                <img src={avatar} alt={`Avatar of ${name}`}
+                                    className="avatar mx-auto d-block" />
                             </div>
                             <div className="col-8">
                                 <h2>Results: </h2>
@@ -135,10 +132,8 @@ class Vote extends Component {
                 </div>
             )
         }
-
     }
 }
-
 function mapStateToProps({ authedUser, users, questions }, props) {
     const this_question_id = props.match.params.question_id
     const question = questions[this_question_id]
@@ -152,7 +147,6 @@ function mapStateToProps({ authedUser, users, questions }, props) {
     } else {
         answeredQuestion = users[authedUser].answers[this_question_id]
     }
-
     return {
         questions,
         question,
@@ -160,8 +154,6 @@ function mapStateToProps({ authedUser, users, questions }, props) {
         authedUser,
         this_question_id,
         answeredQuestion
-
     }
 }
-
 export default connect(mapStateToProps)(Vote)

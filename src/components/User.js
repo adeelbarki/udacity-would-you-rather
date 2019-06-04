@@ -40,4 +40,3 @@ function mapStateToProps({ users }, { id }) {
 }
 
 export default connect(mapStateToProps)(User)
-

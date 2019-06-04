@@ -60,7 +60,9 @@ class NewQuestion extends Component {
                             value={optionOneText}
                             name="optionOneText"
                             onChange={this.handleChange}
-                            className="option-text"
+                            className="form-control"
+                            aria-label="Default" 
+                            aria-describedby="inputGroup-sizing-default"
                             maxLength={50}
                         />
                         {spaceOptionOne <= 50 && (
@@ -78,7 +80,9 @@ class NewQuestion extends Component {
                             value={optionTwoText}
                             name="optionTwoText"
                             onChange={this.handleChange}
-                            className="option-text"
+                            className="form-control" 
+                            aria-label="Default" 
+                            aria-describedby="inputGroup-sizing-default"
                             maxLength={50}
                         />
                         {spaceOptionOne <= 50 && (
