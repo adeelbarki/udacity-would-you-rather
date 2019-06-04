@@ -5,24 +5,14 @@ import { Link } from 'react-router-dom'
 
 class Question extends Component {
 
-    toVote = (event) => {
-        event.preventDefault()
-    }
-
-    toParent = (event, id) => {
-        event.preventDefault()
-        // Redirect to Poll results
-    }
-
     render() {
         const { question, question_id } = this.props
-
         const { name, avatar, optionOne } = question
 
         return (
             <div className="card w-100 mx-auto">
                 <div className="card-header">
-                <span>{name} asks:</span>
+                    <span>{name} asks:</span>
                 </div>
                 <div className="container">
                     <div className="row">
@@ -30,24 +20,19 @@ class Question extends Component {
                             <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
                         </div>
                         <div className="col-10">
-                        
-                <br />
-
-
-                <div>
-                    <h5>Would You Rather...</h5>
-                     <small><i>...{optionOne}...</i></small>
-                    {/* <input type="radio" name="vote" value={optionTwo} />{optionTwo} <br /> */}
-                    <br />
-                    <Link to={`/question/${question_id}`}>
-                        <button className="btn border-info btn-question">View this Card!</button>
-                    </Link>
-                </div>
+                            <br />
+                            <div>
+                                <h5>Would You Rather...</h5>
+                                <small><i>...{optionOne}...</i></small>
+                                {/* <input type="radio" name="vote" value={optionTwo} />{optionTwo} <br /> */}
+                                <br />
+                                <Link to={`/question/${question_id}`}>
+                                    <button className="btn border-info btn-question">View this Card!</button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                
             </div>
         )
     }

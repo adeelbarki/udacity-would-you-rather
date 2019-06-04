@@ -8,12 +8,10 @@ class Leaderboard extends Component {
         const { users } = this.props
 
         return (
-            <div className="card w-25 mx-auto">
-                <div className="container">
-                    {users.map((userId) =>
-                        <User key={userId} id={userId} />
-                    )}
-                </div>
+            <div className="container">
+                {users.map((userId) =>
+                    <User key={userId} id={userId} />
+                )}
             </div>
         )
     }
