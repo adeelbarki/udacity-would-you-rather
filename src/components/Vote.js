@@ -5,7 +5,6 @@ import { formatQuestion } from '../utils/helpers';
 import { handleSaveQuestionAnswer } from '../actions/questions'
 import yourVote from '../your-vote.png'
 
-
 class Vote extends Component {
 
     handleSubmit = (e) => {
@@ -13,11 +12,9 @@ class Vote extends Component {
         dispatch(handleSaveQuestionAnswer(e))
     }
 
-
     render() {
 
         const { question, authedUser, answeredQuestion, users, this_question_id } = this.props
-
 
         if (!question) {
             return (
@@ -32,11 +29,13 @@ class Vote extends Component {
                 </div>
             )
         }
+
         const selectedQuestion = formatQuestion(question, users[question.author])
         const { name, avatar, optionOne, optionTwo } = selectedQuestion
+
         if (answeredQuestion === undefined) {
             return (
-                <div className="card w-25 mx-auto" style={{ marginTop: "20px" }}>
+                <div className="card w-25 mx-auto card-margin-spacing">
                     <div className="card-header">
                         <h5>{name} asks: </h5>
                     </div>
@@ -84,7 +83,7 @@ class Vote extends Component {
             const optionOnePercent = parseInt((optionOneLength / TotalVotes) * 100, 10)
             const optionTwoPercent = parseInt((optionTwoLength / TotalVotes) * 100, 10)
             return (
-                <div className="card w-25 mx-auto" style={{ marginTop: "20px" }}>
+                <div className="card w-25 mx-auto card-margin-spacing" >
                     <div className="card-header">
                         <h5>Asked by {name}</h5>
                     </div>
@@ -99,22 +98,23 @@ class Vote extends Component {
                                 <ul>
                                     <li className="card bg-info text-white">
                                         {users[authedUser].answers[question.id] === 'optionOne' ?
-                                            <div className="card-img-overlay" style={{ float: 'bottom', margin: '-40px 15px 15px 240px' }}>
-                                                <img className="text-right" src={yourVote} alt="logo" style={{ width: '50px', height: '50px' }} />
+                                            <div className="card-img-overlay img-overlay-optionOne">
+                                                <img className="text-right img-overlay-size" src={yourVote} alt="logo" />
                                             </div>
                                             : ''}
                                         <span> {optionOne} </span> <br />
                                         <div className="progress">
-                                            <div className="progress-bar border-sucess bg-warning" role="progressbar" style={{ width: optionOnePercent + ("%") }}
+                                            <div className="progress-bar border-sucess bg-warning" role="progressbar"
+                                                style={{ width: optionOnePercent + ("%") }}
                                                 aria-valuenow={optionOnePercent} aria-valuemin="0" aria-valuemax="100">
                                                 {optionOnePercent}%</div>
                                         </div>
                                         <i className="m-auto">{question.optionOne.votes.length} out of {TotalVotes} votes</i>
                                     </li>
-                                    <li className="card border-dark bg-light" style={{ marginTop: "10px" }}>
+                                    <li className="card border-dark bg-light card-bottom">
                                         {users[authedUser].answers[question.id] === 'optionTwo' ?
-                                            <div className="card-img-overlay" style={{ float: 'right', margin: '50px 15px 15px 240px' }}>
-                                                <img className="text-right" src={yourVote} alt="logo" style={{ width: '50px', height: '50px' }} />
+                                            <div className="card-img-overlay img-overlay-optionTwo">
+                                                <img className="text-right img-overlay-size" src={yourVote} alt="logo" />
                                             </div>
                                             : ''}
                                         <span> {optionTwo} </span> <br />
@@ -134,6 +134,7 @@ class Vote extends Component {
         }
     }
 }
+
 function mapStateToProps({ authedUser, users, questions }, props) {
     const this_question_id = props.match.params.question_id
     const question = questions[this_question_id]
@@ -156,4 +157,5 @@ function mapStateToProps({ authedUser, users, questions }, props) {
         answeredQuestion
     }
 }
+
 export default connect(mapStateToProps)(Vote)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+
 class User extends Component {
     render() {
         const { user } = this.props
@@ -30,7 +31,7 @@ class User extends Component {
                 </div>
             </div>
         )
-    }
+    }F
 }
 
 function mapStateToProps({ users }, { id }) {

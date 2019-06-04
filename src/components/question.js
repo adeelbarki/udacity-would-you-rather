@@ -24,7 +24,6 @@ class Question extends Component {
                             <div>
                                 <h5>Would You Rather...</h5>
                                 <small><i>...{optionOne}...</i></small>
-                                {/* <input type="radio" name="vote" value={optionTwo} />{optionTwo} <br /> */}
                                 <br />
                                 <Link to={`/question/${question_id}`}>
                                     <button className="btn border-info btn-question">View this Card!</button>

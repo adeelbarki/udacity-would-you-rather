@@ -46,12 +46,12 @@ class NewQuestion extends Component {
             return <Redirect to='/home' />
         }
         return (
-            <div className="card w-25 mx-auto" style={{ marginTop: "20px" }}>
+            <div className="card w-25 mx-auto card-margin-spacing">
                 <div className="card-header">
                     <h3 className="App">Create New Question</h3>
                 </div>
                 <div className="container">
-                    <span>Complete the question:</span><br/> <br/>
+                    <span>Complete the question:</span><br /> <br />
                     <h4>Would you Rather ...</h4>
                     <form className="new-question" onSubmit={this.handleSubmit}>
                         <input
@@ -61,7 +61,7 @@ class NewQuestion extends Component {
                             name="optionOneText"
                             onChange={this.handleChange}
                             className="form-control"
-                            aria-label="Default" 
+                            aria-label="Default"
                             aria-describedby="inputGroup-sizing-default"
                             maxLength={50}
                         />
@@ -80,8 +80,8 @@ class NewQuestion extends Component {
                             value={optionTwoText}
                             name="optionTwoText"
                             onChange={this.handleChange}
-                            className="form-control" 
-                            aria-label="Default" 
+                            className="form-control"
+                            aria-label="Default"
                             aria-describedby="inputGroup-sizing-default"
                             maxLength={50}
                         />

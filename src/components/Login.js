@@ -45,12 +45,12 @@ class Login extends Component {
         }
 
         return (
-            <div className="card w-25 mx-auto App" style={{ marginTop: "20px" }}>
+            <div className="card w-25 mx-auto App card-margin-spacing">
                 <div className="card-header">
                     <h4>Welcome to the Would You Rather App</h4>
                     <p>Please sign in to continue</p>
                 </div>
-                <img src={reactReduxLogo} style={{width: '150px', height: '150px'}} alt="reactReduxLogo" />
+                <img src={reactReduxLogo} className="react-redux-logo" alt="reactReduxLogo" />
                 <form onSubmit={this.handleSubmit}>
 
                     <h4>Sign in</h4>
