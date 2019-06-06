@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { formatQuestion } from '../utils/helpers';
 import { handleSaveQuestionAnswer } from '../actions/questions'
-import yourVote from '../your-vote.png'
+//import yourVote from '../your-vote.png'
 
 class Vote extends Component {
 
@@ -97,11 +97,6 @@ class Vote extends Component {
                                 <h2>Results: </h2>
                                 <ul>
                                     <li className="card bg-info text-white">
-                                        {users[authedUser].answers[question.id] === 'optionOne' ?
-                                            <div className="card-img-overlay img-overlay-optionOne">
-                                                <img className="text-right img-overlay-size" src={yourVote} alt="logo" />
-                                            </div>
-                                            : ''}
                                         <span> {optionOne} </span> <br />
                                         <div className="progress">
                                             <div className="progress-bar border-sucess bg-warning" role="progressbar"
@@ -110,13 +105,11 @@ class Vote extends Component {
                                                 {optionOnePercent}%</div>
                                         </div>
                                         <i className="m-auto">{question.optionOne.votes.length} out of {TotalVotes} votes</i>
+                                        {users[authedUser].answers[question.id] === 'optionOne' ?
+                                            <p className="m-auto"><i>[ Your vote ]</i></p>
+                                            : ''}
                                     </li>
                                     <li className="card border-dark bg-light card-bottom">
-                                        {users[authedUser].answers[question.id] === 'optionTwo' ?
-                                            <div className="card-img-overlay img-overlay-optionTwo">
-                                                <img className="text-right img-overlay-size" src={yourVote} alt="logo" />
-                                            </div>
-                                            : ''}
                                         <span> {optionTwo} </span> <br />
                                         <div className="progress">
                                             <div className="progress-bar" role="progressbar" style={{ width: optionTwoPercent + ("%") }}
@@ -124,6 +117,9 @@ class Vote extends Component {
                                                 {optionTwoPercent}%</div>
                                         </div>
                                         <i className="m-auto">{question.optionTwo.votes.length} out of {TotalVotes} votes</i>
+                                        {users[authedUser].answers[question.id] === 'optionTwo' ?
+                                            <p className="m-auto text-black"><i>[ Your vote ]</i></p>
+                                            : ''}
                                     </li>
                                 </ul>
                             </div>
