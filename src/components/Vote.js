@@ -18,11 +18,11 @@ class Vote extends Component {
 
         if (!question) {
             return (
-                <div>
+                <div className="App">
                     <h2>404! This question doesn't exist </h2>
                     <p>
                         Return {'-'}
-                        <Link to="/home">
+                        <Link to="/">
                             <span> Back to Home</span>
                         </Link>
                     </p>

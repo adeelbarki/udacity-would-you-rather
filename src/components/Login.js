@@ -5,9 +5,6 @@ import { Redirect } from 'react-router-dom'
 import reactReduxLogo from '../react-redux.svg'
 
 class Login extends Component {
-    componentWillMount() {
-        this.props.dispatch(setAuthedUser(false))
-    }
 
     state = {
         username: '',
@@ -36,12 +33,13 @@ class Login extends Component {
     }
 
     render() {
+        const { from } = this.props.location.state || {from: {pathname: '/'}}
         const { username, isLoggedIn } = this.state
         const { users } = this.props
         const disableSubmit = username === '' ? true : false
 
         if (isLoggedIn) {
-            return <Redirect to='/home' />
+            return <Redirect to={from} />
         }
 
         return (
@@ -52,7 +50,6 @@ class Login extends Component {
                 </div>
                 <img src={reactReduxLogo} className="react-redux-logo" alt="reactReduxLogo" />
                 <form onSubmit={this.handleSubmit}>
-
                     <h4>Sign in</h4>
                     <select className="select-input" 
                         id="username" value={username} onChange={this.handleChange}>

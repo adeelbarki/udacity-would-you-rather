@@ -27,14 +27,13 @@ class App extends Component {
           {loading === true
             ? null
             : <div>
-              <Route path="/login" exact component={Login} />
-              <PrivateRoute path='/home' exact component={Dashboard} />
+              <PrivateRoute path='/' exact component={Dashboard} />
               <PrivateRoute path="/question/:question_id" component={Vote} render={(props) => (
                 <Vote {...props} />
               )} />
               <PrivateRoute path="/add" exact component={newQuestion} />
               <PrivateRoute path="/leaderboard" exact component={Leaderboard} />
-              <Route path="/" exact component={Login} />
+              <Route path="/login" exact component={Login} />
             </div>
           }
         </div>

@@ -3,16 +3,27 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import logo from '../survey.png'
 
+import { logout } from '../actions/authedUser'
+
 
 class Navbar extends Component {
+
+    handleLogOut = (e) => {
+        const { user, dispatch } = this.props
+        dispatch(logout(user.id))
+    }
+
+
     render() {
 
         const { user, authedUser } = this.props
+        
+
         const userLink = (
 
             <ul className="navbar-nav m-auto">
                 <li className="nav-item">
-                    <NavLink to='/home' className="nav-link text-white text-uppercase ml-5" exact activeClassName="active">
+                    <NavLink to='/' className="nav-link text-white text-uppercase ml-5" exact activeClassName="active">
                         Home <i className="fas fa-home"></i>
                     </NavLink>
                 </li>
@@ -28,12 +39,20 @@ class Navbar extends Component {
                 </li>
                 <h2 className="nav-link text-white text-uppercase ml-5">
                     |</h2>
-                <li className="nav-item m-right"><p className="nav-link text-white text-uppercase ml-5">
-                    {user ? user.name : null} <i className="fas fa-user"></i>
+                <li className="nav-item m-right">
+                    {user ? <p className="nav-link text-white text-uppercase ml-5">{user.name}<i className="fas fa-user"></i>
 
-                </p></li>
+                </p>: null } </li>
                 <li>
-                    <NavLink className="nav-link text-white text-uppercase ml-5" to="/login">Log out <i className="fas fa-sign-out-alt"></i></NavLink>
+                    <NavLink 
+                        className="nav-link text-white text-uppercase ml-5" 
+                        to="#"
+                        onClick={this.handleLogOut}
+                        >
+                            {user ? <p>Logout
+                        <i className="fas fa-sign-out-alt"></i></p> : null }
+                        
+                    </NavLink>
                 </li>
             </ul>
         )

@@ -43,7 +43,7 @@ class NewQuestion extends Component {
         const spaceOptionTwo = 50 - optionTwoText.length
 
         if (toHome === true) {
-            return <Redirect to='/home' />
+            return <Redirect to='/' />
         }
         return (
             <div className="card w-25 mx-auto card-margin-spacing">
