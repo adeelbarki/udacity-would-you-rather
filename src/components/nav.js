@@ -16,8 +16,8 @@ class Navbar extends Component {
 
     render() {
 
-        const { user, authedUser } = this.props
-        
+        const { user } = this.props
+
 
         const userLink = (
 
@@ -42,32 +42,28 @@ class Navbar extends Component {
                 <li className="nav-item m-right">
                     {user ? <p className="nav-link text-white text-uppercase ml-5">{user.name}<i className="fas fa-user"></i>
 
-                </p>: null } </li>
+                    </p> : null} </li>
                 <li>
-                    <NavLink 
-                        className="nav-link text-white text-uppercase ml-5" 
+                    <NavLink
+                        className="nav-link text-white text-uppercase ml-5"
                         to="#"
                         onClick={this.handleLogOut}
-                        >
-                            {user ? <p>Logout
-                        <i className="fas fa-sign-out-alt"></i></p> : null }
-                        
+                    >
+                        {user ? <p>Logout
+                        <i className="fas fa-sign-out-alt"></i></p> : <div className="navbar-nav m-auto text-white">
+                                <h5>Who are you?</h5>
+            </div>}
+
                     </NavLink>
                 </li>
             </ul>
-        )
-
-        const guestLink = (
-            <div className="navbar-nav m-auto text-white">
-                <h2 className="justify-content-guest">Who are you?</h2>
-            </div>
         )
 
         return (
             <nav className="nav navbar-expand-lg navbar-light bg-dark">
                 <h2 className="nav-link text-white m-left">Polls</h2>
                 <img className="poll-logo" src={logo} alt="logo" />
-                {authedUser ? userLink : guestLink}
+                {userLink}
             </nav>
         )
     }
@@ -79,7 +75,6 @@ function mapStateToProps({ users, authedUser }) {
     console.log(authedUser)
     return {
         user,
-        authedUser
     }
 
 }
